@@ -1,0 +1,40 @@
+.boards_list {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.boards_list_item {
+
+    width: 20em;
+    max-width: 90vw;
+    height: 10em;
+
+    border-radius: 5px;
+}
+
+.board_list_input_form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.5em;
+
+    position: relative;
+}
+
+.create-button {
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.create-button:hover {
+    background: var(--secondary-accent);
+}
+
+.cancel-button {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+}

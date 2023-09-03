@@ -1,0 +1,51 @@
+<div ngClass="border-bottom-light background-secondary">
+    <div ngClass="width-wrap">
+        <app-navigation>
+            <ng-container left>
+                <div ngClass="icon_box medium">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0625 3.9375V10.8125C17.0625 11.3648 17.5102 11.8125 18.0625 11.8125H26.5625C27.1148 11.8125 27.5625 11.3648 27.5625 10.8125V3.9375M17.0625 27.5625H26.5625C27.1148 27.5625 27.5625 27.1148 27.5625 26.5625V15.4375C27.5625 14.8852 27.1148 14.4375 26.5625 14.4375H17.0625M3.9375 27.5625H13.4375C13.9898 27.5625 14.4375 27.1148 14.4375 26.5625V20.6875C14.4375 20.1352 13.9898 19.6875 13.4375 19.6875H3.9375M3.9375 16.0625C3.9375 16.6148 4.38522 17.0625 4.9375 17.0625H13.4375C13.9898 17.0625 14.4375 16.6148 14.4375 16.0625V4.9375C14.4375 4.38522 13.9898 3.9375 13.4375 3.9375H4.9375C4.38522 3.9375 3.9375 4.38522 3.9375 4.9375V16.0625Z" fill="black"/>
+                    </svg>
+                </div>
+                <p ngClass="bold medium">Boards</p>
+            </ng-container>
+            <ng-container right>
+                <button (click)="showCreate = !showCreate" title="Add Board" ngClass="no-default cursor-pointer">
+                    <div ngClass="icon_box medium">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.00004 4C3.2928 4 2.61452 4.28095 2.11442 4.78105C1.61433 5.28115 1.33337 5.95942 1.33337 6.66667V25.3333C1.33337 26.0406 1.61433 26.7189 2.11442 27.219C2.61452 27.719 3.2928 28 4.00004 28H28C28.7073 28 29.3856 27.719 29.8857 27.219C30.3858 26.7189 30.6667 26.0406 30.6667 25.3333V6.66667C30.6667 5.95942 30.3858 5.28115 29.8857 4.78105C29.3856 4.28095 28.7073 4 28 4H4.00004ZM4.00004 6.66667H17.3334V12H28V25.3333H4.00004V6.66667ZM13.3334 13.3333V17.3333H9.33337V20H13.3334V24H16V20H20V17.3333H16V13.3333H13.3334Z" fill="black"/>
+                        </svg>
+                    </div>
+                </button>
+            </ng-container>
+        </app-navigation>
+    </div>
+</div>
+<main ngClass="width-wrap padding-block-1">
+    <div ngClass="error_body" *ngIf="error">
+        {{ error.status }}
+        {{ error.statusText }}
+    </div>
+    <div ngClass="boards_list">
+        <div
+            *ngIf="showCreate"
+            ngClass="boards_list_item background-secondary border-all-light"
+        >
+            <form ngClass="board_list_input_form padding-1">
+                <input ngClass="no-default h3" placeholder="Enter Board Title" type="text">
+                <button ngClass="create-button no-default cursor-pointer padding-2">Create Board</button>
+                <button ngClass="cancel-button no-default cursor-pointer" (click)="showCreate = !showCreate">Cancel</button>
+            </form>
+        </div>
+        <div
+            ngClass="boards_list_item background-secondary border-all-light cursor-pointer"
+            *ngFor="let board of boards"
+        >
+            <board-card
+             [routerLink]="['/boards/', board.id]"
+             [title]="board.title"
+             [subtitle]="board.created_at"
+             ></board-card>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,9 @@
+.main_nav_link {
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    padding: 1.3em 2em 1em 2em;
+}
+
+.main_nav_link:hover {
+    border-bottom: 3px solid var(--primary-accent);
+}

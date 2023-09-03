@@ -1,0 +1,8 @@
+.login-body {
+    min-height: calc(100vh - 5em);
+}
+
+button.login-button {
+    background: var(--primary-accent);
+    color: var(--pure-white);
+}

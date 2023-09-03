@@ -1,0 +1,18 @@
+<div ngClass="border-bottom-light background-secondary">
+    <div ngClass="width-wrap">
+        <app-navigation>
+            <ng-container left>
+                <p ngClass="bold medium">
+                    <ng-container *ngIf="board; else titleLoading">{{board.title}}</ng-container>
+                    <ng-template #titleLoading>Loading...</ng-template>
+                </p>
+            </ng-container>
+        </app-navigation>
+    </div>
+</div>
+<div class="width-wrap padding-block-1">
+    <div *ngIf="board; else boardLoading">
+        <p>{{ board.created_at | timeago }}</p>
+    </div>
+    <ng-template #boardLoading>Loading...</ng-template>
+</div>
