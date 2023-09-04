@@ -9,7 +9,8 @@ export class BoardsService {
 
   private baseURL = "http://192.168.29.192:3000/"
 
-  addBoard(board: Board) {
+  addBoard(board: Partial<Board>) {
+    return this.http.post<Board>(`${this.baseURL}/boards/`, board)
   }
 
   getBoards() {
@@ -18,6 +19,10 @@ export class BoardsService {
 
   getBoard(id: string) {
     return this.http.get<Board>(`${this.baseURL}/boards/${id}`);
+  }
+
+  deleteBoard(id: string) {
+    return this.http.delete(`${this.baseURL}/boards/${id}`);
   }
 
   constructor(

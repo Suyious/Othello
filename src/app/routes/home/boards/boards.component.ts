@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Board } from "../../../types/board"
 import { BoardsService } from 'src/app/services/boards.service';
 import { catchError, of } from 'rxjs';
@@ -11,12 +11,15 @@ import { catchError, of } from 'rxjs';
 })
 export class BoardsComponent {
 
+  id = this.route.snapshot.paramMap.get('id');
   board?: Board;
   error: { message: string, status: string, statusText: string } | null = null;
+  menuOpen: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private service: BoardsService
+    private service: BoardsService,
+    private router: Router,
   ) {}
 
   getBoard(id: string) {
@@ -37,10 +40,24 @@ export class BoardsComponent {
     });  
   }
 
+  deleteBoard(id: string) {
+    this.service.deleteBoard(id).pipe(
+      catchError((error) => {
+        console.log({
+          message: error.message,
+          status: error.status,
+          statusText: error.status
+        })
+        return of(null); 
+      })
+    ).subscribe((data) => {
+      this.router.navigate(['/dashboard'])
+    })
+  }
+
   ngOnInit(){
-    const id = this.route.snapshot.paramMap.get('id');
-    if(id) {
-      this.getBoard(id);
+    if(this.id) {
+      this.getBoard(this.id);
     } 
   }
 }

@@ -1,0 +1,9 @@
+<div class="modal_menu_body"
+     [ngClass]="absolute ? 'absolute' : 'fixed'"
+     [ngStyle]="{
+        'top': position.top, 'left': position.left,
+        'right': position.right, 'bottom': position.bottom
+    }">
+    <div *ngIf="title" class="menu_title padding-1">{{ title }}</div>
+    <ng-content></ng-content>
+</div>

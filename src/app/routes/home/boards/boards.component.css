@@ -1,0 +1,13 @@
+.menu-items {
+    list-style: none;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.menu-item p {
+    white-space: nowrap;
+}

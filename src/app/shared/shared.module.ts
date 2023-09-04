@@ -4,11 +4,13 @@ import { NavigationComponent } from './components/layout/navigation/navigation.c
 import { BoardComponent } from './components/containers/cards/board/board.component';
 import { RouterModule } from '@angular/router';
 import { TimeagoPipe } from './pipes/timeago.pipe';
+import { MenuComponent } from './components/layout/modals/menu/menu.component';
 
 @NgModule({
   declarations: [
     NavigationComponent,
     BoardComponent,
+    MenuComponent,
     TimeagoPipe,
   ],
   imports: [
@@ -19,6 +21,7 @@ import { TimeagoPipe } from './pipes/timeago.pipe';
     NavigationComponent,
     BoardComponent,
     TimeagoPipe,
+    MenuComponent,
   ]
 })
 export class SharedModule { }

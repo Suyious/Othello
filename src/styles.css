@@ -79,7 +79,7 @@ p.medium {
     padding: 0.5em 1em;
 }
 
-button.padding-2 {
+.padding-2 {
     padding: 0.5em 2em;
 }
 
@@ -115,4 +115,16 @@ button.padding-2 {
 
 .padding-block-1 {
     padding-block: 1em;
+}
+
+.relative {
+    position: relative;
+}
+
+.round-borders-small {
+    border-radius: 30px;
+}
+
+.hover-highlight:hover {
+    background: var(--secondary-accent);
 }

@@ -2,10 +2,43 @@
     <div ngClass="width-wrap">
         <app-navigation>
             <ng-container left>
+                <div ngClass="icon_box medium">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.4632 9.15598L22.0465 9.1305L22.1356 18.1717L19.5524 18.1972L19.4632 9.15598ZM14.2968 9.20694L16.88 9.18146L17.0074 22.0975L14.4242 22.123L14.2968 9.20694ZM9.13042 9.2579L11.7136 9.23242L11.7646 14.3988L9.18138 14.4243L9.13042 9.2579ZM6.52173 6.70017L24.6042 6.52181L24.7825 24.6043L6.70009 24.7826L6.52045 6.57101M6.72557 27.3658L24.808 27.1875C26.2288 27.1735 27.3798 25.9995 27.3658 24.5788L27.1874 6.49633C27.1734 5.07556 25.9995 3.92458 24.5787 3.9386L6.49625 4.11696C5.07548 4.13098 3.9245 5.30489 3.93852 6.72565L4.11689 24.8081C4.1309 26.2289 5.30481 27.3798 6.72557 27.3658Z" fill="black"/>
+                    </svg>
+                </div>
                 <p ngClass="bold medium">
                     <ng-container *ngIf="board; else titleLoading">{{board.title}}</ng-container>
                     <ng-template #titleLoading>Loading...</ng-template>
                 </p>
+            </ng-container>
+            <ng-container right>
+                <div ngClass="relative">
+                    <div
+                        (click)="menuOpen = !menuOpen"
+                        ngClass="icon_box medium cursor-pointer hover-highlight round-borders-small">
+                        <svg width="24" height="29" viewBox="0 0 24 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.5 19C13.163 19 13.7989 19.2634 14.2678 19.7322C14.7366 20.2011 15 20.837 15 21.5C15 22.163 14.7366 22.7989 14.2678 23.2678C13.7989 23.7366 13.163 24 12.5 24C11.837 24 11.2011 23.7366 10.7322 23.2678C10.2634 22.7989 10 22.163 10 21.5C10 20.837 10.2634 20.2011 10.7322 19.7322C11.2011 19.2634 11.837 19 12.5 19ZM12.5 11.5C13.163 11.5 13.7989 11.7634 14.2678 12.2322C14.7366 12.7011 15 13.337 15 14C15 14.663 14.7366 15.2989 14.2678 15.7678C13.7989 16.2366 13.163 16.5 12.5 16.5C11.837 16.5 11.2011 16.2366 10.7322 15.7678C10.2634 15.2989 10 14.663 10 14C10 13.337 10.2634 12.7011 10.7322 12.2322C11.2011 11.7634 11.837 11.5 12.5 11.5ZM12.5 4C13.163 4 13.7989 4.26339 14.2678 4.73223C14.7366 5.20107 15 5.83696 15 6.5C15 7.16304 14.7366 7.79893 14.2678 8.26777C13.7989 8.73661 13.163 9 12.5 9C11.837 9 11.2011 8.73661 10.7322 8.26777C10.2634 7.79893 10 7.16304 10 6.5C10 5.83696 10.2634 5.20107 10.7322 4.73223C11.2011 4.26339 11.837 4 12.5 4Z" fill="black"/>
+                        </svg>
+                    </div>
+                    <modal-menu
+                        *ngIf="menuOpen"
+                        [absolute]="true" [position]="{ top: '3em', right: '0' }">
+                        <ul *ngIf="board; else menuLoading" ngClass="menu-items">
+                            <li 
+                                (click)="id && deleteBoard(id)"
+                                ngClass="menu-item padding-1 cursor-pointer hover-highlight">
+                                <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.25 16.625C5.25 17.0891 5.43437 17.5342 5.76256 17.8624C6.09075 18.1906 6.53587 18.375 7 18.375H14C14.4641 18.375 14.9092 18.1906 15.2374 17.8624C15.5656 17.5342 15.75 17.0891 15.75 16.625V6.125H5.25V16.625ZM7 7.875H14V16.625H7V7.875ZM13.5625 3.5L12.6875 2.625H8.3125L7.4375 3.5H4.375V5.25H16.625V3.5H13.5625Z" fill="black"/>
+                                </svg>
+                                <p>Delete Board</p>
+                            </li>
+                        </ul>
+                        <ng-template #menuLoading>
+                            <li ngClass="menu-item padding-1">Loading ...</li>
+                        </ng-template>
+                    </modal-menu>
+                </div>
             </ng-container>
         </app-navigation>
     </div>

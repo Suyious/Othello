@@ -1,0 +1,22 @@
+.modal_menu_body.fixed {
+    position: fixed;
+}
+
+.modal_menu_body.absolute {
+    position: absolute;
+}
+
+.modal_menu_body {
+    top: 0;
+    right: 0;
+
+    background: var(--secondary-background);
+    border-radius: 5px;
+}
+
+.menu_title {
+    min-width: 10em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #0000007d;
+}

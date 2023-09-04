@@ -22,18 +22,27 @@
     </div>
 </div>
 <main ngClass="width-wrap padding-block-1">
-    <div ngClass="error_body" *ngIf="error">
-        {{ error.status }}
-        {{ error.statusText }}
+    <div ngClass="error_body" *ngIf="getBoardError">
+        {{ getBoardError.status }}
+        {{ getBoardError.statusText }}
     </div>
     <div ngClass="boards_list">
         <div
             *ngIf="showCreate"
             ngClass="boards_list_item background-secondary border-all-light"
         >
-            <form ngClass="board_list_input_form padding-1">
-                <input ngClass="no-default h3" placeholder="Enter Board Title" type="text">
-                <button ngClass="create-button no-default cursor-pointer padding-2">Create Board</button>
+            <form
+                [formGroup]="newBoard"
+                (ngSubmit)="onSubmitNewBoard()"
+                ngClass="board_list_input_form padding-1">
+                <div ngClass="error_body" *ngIf="createBoardError">
+                    {{ createBoardError.status }}
+                    {{ createBoardError.statusText }}
+                </div>
+                <input ngClass="no-default h3" placeholder="Enter Board Title"
+                       formControlName="title" type="text">
+                <button type="submit" [disabled]="!newBoard.valid"
+                        ngClass="create-button no-default cursor-pointer padding-2">Create Board</button>
                 <button ngClass="cancel-button no-default cursor-pointer" (click)="showCreate = !showCreate">Cancel</button>
             </form>
         </div>
