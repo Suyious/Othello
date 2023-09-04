@@ -5,12 +5,21 @@
 }
 
 .boards_list_item {
+    --width-percentage: calc(25% - 1em);
 
-    width: 20em;
+    width: var(--width-percentage);
     max-width: 90vw;
     height: 10em;
 
     border-radius: 5px;
+}
+
+@media all and (max-width: 912px) {
+    .boards_list_item { --width-percentage: calc(33.33% - 1em); }
+}
+
+@media all and (max-width: 605px) {
+    .boards_list_item { --width-percentage: calc(50% - 0.5em); }
 }
 
 .board_list_input_form {

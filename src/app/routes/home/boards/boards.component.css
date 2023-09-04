@@ -1,3 +1,9 @@
+.board_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .menu-items {
     list-style: none;
 }

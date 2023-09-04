@@ -2,7 +2,19 @@
     min-height: calc(100vh - 5em);
 }
 
+.login-main {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
 button.login-button {
     background: var(--primary-accent);
     color: var(--pure-white);
+    font-size: 1em;
+    font-family: inherit;
+    width: 20em;
+    border: 2px solid #b64747;
+    border-radius: 5px;
 }

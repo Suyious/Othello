@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, of } from 'rxjs';
 import { BoardsService } from 'src/app/services/boards.service';
+import { SlideAndScaleAnimation } from 'src/app/shared/animations/slide-scale';
 import { Board } from 'src/app/types/board';
 
 type Error = { message: string, status: string, statusText: string };
@@ -9,7 +10,10 @@ type Error = { message: string, status: string, statusText: string };
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  animations: [
+    SlideAndScaleAnimation,
+  ],
 })
 export class DashboardComponent {
 
@@ -28,15 +32,15 @@ export class DashboardComponent {
     this.boardsService.addBoard(this.newBoard.value)
       .pipe(catchError((error) => {
         this.createBoardError = {
-            message: error.message,
-            status: error.status,
-            statusText: error.statusText,
+          message: error.message,
+          status: error.status,
+          statusText: error.statusText,
         }
         return of(null);
       }))
       .subscribe((data) => {
-        if(data) {
-          this.boards.push(data);
+        if (data) {
+          this.boards.unshift(data);
           this.showCreate = false;
           this.newBoard.reset();
         }
@@ -51,12 +55,12 @@ export class DashboardComponent {
             message: error.message,
             status: error.status,
             statusText: error.statusText,
-           }
+          }
           return of(null);
         })
       )
       .subscribe((data) => {
-        if(data) {
+        if (data) {
           this.boards = data;
           this.showCreate = false;
         }

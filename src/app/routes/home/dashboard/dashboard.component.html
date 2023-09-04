@@ -30,6 +30,7 @@
         <div
             *ngIf="showCreate"
             ngClass="boards_list_item background-secondary border-all-light"
+            @ToggleCreate
         >
             <form
                 [formGroup]="newBoard"

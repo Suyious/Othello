@@ -12,6 +12,7 @@
 
     background: var(--secondary-background);
     border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
 }
 
 .menu_title {

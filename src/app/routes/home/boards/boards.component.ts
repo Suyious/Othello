@@ -28,7 +28,7 @@ export class BoardsComponent {
         this.error = {
           message: error.message,
           status: error.status,
-          statusText: error.status
+          statusText: error.statusText
         }
         return of(null);
       })

@@ -12,4 +12,5 @@ nav.nav {
     display: flex;
     align-items: center;
     gap: 0.5em;
+    max-width: 80vw;
 }
