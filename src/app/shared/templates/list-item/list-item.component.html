@@ -1,0 +1,43 @@
+<div ngClass="non-mobile lists_main width-wrap padding-block-1">
+    <ng-container *ngFor="let status of allStatus">
+        <list-column [status]="status">
+            <ul ngClass="no-default">
+                <ng-container *ngFor="let t of lists">
+                    <li *ngIf="t.status === status" ngClass="list_item cursor-pointer hover-highlight">
+                        <p ngClass="list_item_title">{{ t.title }}</p>
+                        <p ngClass="list_item_description">{{ t.description }}</p>
+                        <div>{{ t.updated_at | timeago }}</div>
+                    </li>
+                </ng-container>
+            </ul>
+            <form collapse ngClass="list_item">
+                <input ngClass="list_item_title no-default" type="text" placeholder="Title">
+                <input ngClass="list_item_description no-default" type="text" placeholder="Description">
+            </form>
+        </list-column>
+    </ng-container>
+</div>
+
+<div ngClass="mobile background-secondary">
+    <div ngClass="width-wrap">
+        <app-tabs [tabs]="['todo', 'doing', 'done']"></app-tabs>
+    </div>
+</div>
+
+
+<div ngClass="mobile width-wrap padding-block-1">
+    <div ngClass="lists_main">
+        <list-column [status]="allStatus[active]">
+            <ul ngClass="no-default">
+                <ng-container *ngFor="let t of lists">
+                    <li *ngIf="t.status === allStatus[active]" ngClass="list_item cursor-pointer hover-highlight">{{
+                        t.title }}</li>
+                </ng-container>
+            </ul>
+            <form collapse ngClass="list_item">
+                <input ngClass="list_item_title no-default" type="text" placeholder="Title">
+                <input ngClass="list_item_description no-default" type="text" placeholder="Description">
+            </form>
+        </list-column>
+    </div>
+</div>

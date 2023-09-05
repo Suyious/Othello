@@ -3,8 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Board } from "../../../types/board"
 import { BoardsService } from 'src/app/services/boards.service';
 import { catchError, of } from 'rxjs';
-import { ListsService } from 'src/app/services/lists.service';
-import { List, Status } from 'src/app/types/list';
 
 @Component({
   selector: 'app-boards',
@@ -14,17 +12,14 @@ import { List, Status } from 'src/app/types/list';
 export class BoardsComponent {
 
   id = this.route.snapshot.paramMap.get('id');
+  loading: boolean = true;
   error: { message: string, status: string, statusText: string } | null = null;
   menuOpen: boolean = false;
   board?: Board;
-  allStatus:Status[] = ["todo", "doing", "done"];
-  active: number = 0; // To be used only in mobile
-  lists?: List[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private boardsService: BoardsService,
-    private listsService: ListsService,
     private router: Router,
   ) {}
 
@@ -39,6 +34,7 @@ export class BoardsComponent {
         return of(null);
       })
     ).subscribe((data) => {
+      this.loading = false
       if(data) {
         this.board = data;
       }
@@ -60,34 +56,9 @@ export class BoardsComponent {
     })
   }
 
-  getLists(id: string) {
-    this.listsService.getLists(id).pipe(
-      catchError((error) => {
-        console.log({
-          message: error.message,
-          status: error.status,
-          statusText: error.status
-        })
-        return of(null); 
-      })
-    ).subscribe((data) => {
-      if(data) {
-        this.lists = data;
-        console.log(this.lists)
-      }
-    })
-  }
-
-  // To be used on mobile
-  setActive(active: number) {
-    this.active = active
-    console.log(this)
-  }
-
   ngOnInit(){
     if(this.id) {
       this.getBoard(this.id);
-      this.getLists(this.id);
     } 
   }
 }

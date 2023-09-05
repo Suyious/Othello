@@ -45,33 +45,13 @@
     </div>
 </div>
 
-<div ngClass="mobile background-secondary">
-    <div ngClass="width-wrap">
-        <app-tabs [tabs]="allStatus" [active]="active"></app-tabs>
-    </div>
+<div ngClass="width-wrap padding-block-1" *ngIf="loading">Loading ...</div>
+<div ngClass="width-wrap padding-block-1" *ngIf="error">
+    <details *ngIf="error">
+        <summary> {{error.statusText}} <a routerLink="/dashboard">Go Back</a> </summary>
+        <p>{{error.message}}</p>
+    </details>
 </div>
-
-<div class="width-wrap padding-block-1">
-    <div *ngIf="error; else NoErrors">
-        <details *ngIf="error">
-            <summary> {{error.statusText}} <a routerLink="/dashboard">Go Back</a> </summary>
-            <p>{{error.message}}</p>
-        </details>
-    </div>
-    <ng-template #NoErrors>
-        <div ngClass="non-mobile lists_main" *ngIf="board; else boardLoading">
-            <ng-container *ngFor="let status of allStatus">
-                <list-column [status]="status">
-                    <ul ngClass="no-default">
-                    </ul>
-                </list-column>
-            </ng-container>
-        </div>
-        <div ngClass="mobile">
-            <div ngClass="lists_main" *ngIf="board; else boardLoading">
-                <list-column [status]="allStatus[active]"></list-column>
-            </div>
-        </div>
-        <ng-template #boardLoading>Loading...</ng-template>
-    </ng-template>
+<div *ngIf="board">
+    <list-item [id]="board.id"></list-item>
 </div>

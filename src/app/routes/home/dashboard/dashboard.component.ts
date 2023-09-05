@@ -60,9 +60,9 @@ export class DashboardComponent {
         })
       )
       .subscribe((data) => {
+        this.loading = false;
         if (data) {
           this.boards = data;
-          this.showCreate = false;
         }
       });
   }

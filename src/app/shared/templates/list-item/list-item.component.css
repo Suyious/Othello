@@ -1,0 +1,35 @@
+@media all and (min-width: 615px) {
+
+    .lists_main {
+        display: flex;
+        justify-content: space-between;
+        gap: 1em;
+    }
+
+    .lists_main > * {
+        flex: 1;
+    }
+
+    .mobile {
+        display: none;
+    }
+}
+
+.list_item {
+    padding: 1em 2em;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.list_item_title {
+    font-weight: 700;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+@media all and (max-width: 614px) {
+    .non-mobile {
+        display: none;
+    }
+}

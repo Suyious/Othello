@@ -21,7 +21,9 @@
         </app-navigation>
     </div>
 </div>
+
 <main ngClass="width-wrap padding-block-1">
+    <div *ngIf="loading">Loading...</div>
     <div ngClass="error_body" *ngIf="getBoardError">
         {{ getBoardError.status }}
         {{ getBoardError.statusText }}

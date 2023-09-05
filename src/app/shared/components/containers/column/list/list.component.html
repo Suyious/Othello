@@ -3,7 +3,10 @@
         <p ngClass="bold">{{ status }}</p>
     </div>
     <ng-content></ng-content>
-    <div ngClass="list_bottom cursor-pointer hover-highlight">
+    <ng-content select="[collapse]" *ngIf="createOpen"></ng-content>
+    <div
+        (click)="createOpen = !createOpen" 
+        ngClass="list_bottom cursor-pointer hover-highlight">
         <div ngClass="icon_box small">
             <svg width="20" height="20" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 13.8043H13V19.8043H11V13.8043H5V11.8043H11V5.80426H13V11.8043H19V13.8043Z" fill="black"/>

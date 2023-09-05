@@ -7,6 +7,7 @@ import { TimeagoPipe } from './pipes/timeago.pipe';
 import { MenuComponent } from './components/layout/modals/menu/menu.component';
 import { ListComponent } from './components/containers/column/list/list.component';
 import { TabsComponent } from './components/layout/tabs/tabs.component';
+import { ListItemComponent } from './templates/list-item/list-item.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TabsComponent } from './components/layout/tabs/tabs.component';
     ListComponent,
     MenuComponent,
     TabsComponent,
+    ListItemComponent,
     TimeagoPipe,
   ],
   imports: [
@@ -27,6 +29,7 @@ import { TabsComponent } from './components/layout/tabs/tabs.component';
     ListComponent,
     MenuComponent,
     TabsComponent,
+    ListItemComponent,
     TimeagoPipe,
   ]
 })
