@@ -1,0 +1,9 @@
+<nav ngClass="tabs">
+    <ul ngClass="tabs_main no-default">
+        <li *ngFor="let tab of tabs; index as i">
+            <p
+                [ngClass]="i === active ? 'active' : ''"
+                class="tab bold hover-highlight cursor-pointer">{{tab}}</p>
+        </li>
+    </ul>
+</nav>

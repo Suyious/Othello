@@ -113,6 +113,12 @@ p.medium {
     width: 1.8em;
 }
 
+.icon_box.small svg {
+    display: flex;
+    height: 1.5em;
+    width: 1.5em;
+}
+
 .padding-block-1 {
     padding-block: 1em;
 }

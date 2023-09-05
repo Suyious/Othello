@@ -1,0 +1,25 @@
+nav.tabs {
+    width: 100%;
+    height: 100%;
+}
+
+.tabs ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tabs ul li {
+    flex: 1;
+}
+
+.tab {
+    padding: 1em 2em;
+    text-align: center;
+    width: 100%;
+    border-bottom: 5px solid transparent;
+}
+
+.tab.active {
+    border-bottom: 5px solid var(--primary-accent);
+}

@@ -34,7 +34,7 @@
         >
             <form
                 [formGroup]="newBoard"
-                (ngSubmit)="onSubmitNewBoard()"
+                (ngSubmit)="addNewBoard()"
                 ngClass="board_list_input_form padding-1">
                 <div ngClass="error_body" *ngIf="createBoardError">
                     {{ createBoardError.status }}

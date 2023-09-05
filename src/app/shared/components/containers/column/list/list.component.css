@@ -1,0 +1,17 @@
+.list_body {
+    background: var(--secondary-background);
+    border-radius: 5px;
+}
+
+.list_title {
+    font-size: 1em;
+    text-transform: capitalize;
+    padding: 1em 2em;
+}
+
+.list_bottom {
+    display: flex;
+    align-items: center;
+    padding: 1em 2em;
+    gap: 1em;
+}

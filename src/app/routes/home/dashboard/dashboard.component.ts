@@ -27,7 +27,7 @@ export class DashboardComponent {
     title: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
   })
 
-  onSubmitNewBoard() {
+  addNewBoard() {
     console.log(this.newBoard.value)
     this.boardsService.addBoard(this.newBoard.value)
       .pipe(catchError((error) => {
@@ -65,10 +65,6 @@ export class DashboardComponent {
           this.showCreate = false;
         }
       });
-  }
-
-  createBoard() {
-    console.log("This should Create Board")
   }
 
   ngOnInit() {
