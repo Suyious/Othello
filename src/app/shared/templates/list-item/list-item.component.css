@@ -20,6 +20,7 @@
     user-select: none;
     display: flex;
     flex-direction: column;
+    background: var(--secondary-background);
 }
 
 .list_item_title {

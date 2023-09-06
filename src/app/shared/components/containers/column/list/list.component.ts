@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Status } from 'src/app/types/list';
 
 @Component({
@@ -8,6 +8,9 @@ import { Status } from 'src/app/types/list';
 })
 export class ListComponent {
   @Input() status: Status = "todo";
-  @Output() createOpenEvent = new EventEmitter<boolean>();
   createOpen: boolean = false;
+
+  toggleCreateOpen() {
+    this.createOpen = !this.createOpen;
+  }
 }

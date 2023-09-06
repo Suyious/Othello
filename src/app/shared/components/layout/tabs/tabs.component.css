@@ -18,6 +18,7 @@ nav.tabs {
     text-align: center;
     width: 100%;
     border-bottom: 5px solid transparent;
+    user-select: none;
 }
 
 .tab.active {

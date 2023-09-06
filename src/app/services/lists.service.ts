@@ -7,7 +7,7 @@ import { List } from '../types/list';
 })
 export class ListsService {
 
-  private baseURL = "http://192.168.29.192:3000/"
+  private baseURL = "http://192.168.29.192:3000"
   
   getLists(boardId: string) {
     return this.http.get<List[]>(`${this.baseURL}/boards/${boardId}/lists/`);

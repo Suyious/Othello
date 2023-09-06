@@ -11,7 +11,7 @@ import { List, Status } from 'src/app/types/list';
 })
 export class ListItemComponent {
 
-  @Input() id:string | null = null;
+  @Input() id:string = '';
 
   loading: boolean = true;
   lists: List[] = [];
@@ -19,8 +19,8 @@ export class ListItemComponent {
   active: number = 0; // To be used only in mobile
 
   newListItem = new FormGroup({
-    title: new FormControl('', { nonNullable: true, validators: Validators.required }),
-    description: new FormControl('', { nonNullable: true }),
+    title: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
+    description: new FormControl<string>('', { nonNullable: true }),
   })
 
   constructor(
@@ -46,6 +46,7 @@ export class ListItemComponent {
   }
 
   addNewList(id:string, status: Status) {
+    console.log(id, status)
     this.listsService.createList(id, {
       title: this.newListItem.value.title,
       description: this.newListItem.value.description,
@@ -57,7 +58,8 @@ export class ListItemComponent {
     ).subscribe(data => {
         if(data) {
           console.log(data);
-          this.lists.unshift(data)
+          this.lists.unshift(data);
+          this.newListItem.reset();
         }
     }) 
   }

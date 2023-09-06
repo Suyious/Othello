@@ -3,6 +3,7 @@
         <li *ngFor="let tab of tabs; index as i">
             <p
                 [ngClass]="i === active ? 'active' : ''"
+                (click)="tabTo(i)"
                 class="tab bold hover-highlight cursor-pointer">{{tab}}</p>
         </li>
     </ul>

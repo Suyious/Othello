@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',
@@ -8,4 +8,10 @@ import { Component, Input } from '@angular/core';
 export class TabsComponent {
   @Input() tabs: string[] = []
   @Input() active: number = 0;
+  @Output() tabEvent = new EventEmitter<number>();
+
+  tabTo(index: number) {
+    this.active = index;
+    this.tabEvent.emit(this.active);
+  }
 }

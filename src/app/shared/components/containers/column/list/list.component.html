@@ -3,9 +3,13 @@
         <p ngClass="bold">{{ status }}</p>
     </div>
     <ng-content></ng-content>
-    <ng-content select="[collapse]" *ngIf="createOpen"></ng-content>
+    <div ngClass="relative" *ngIf="createOpen"> 
+        <button type="button" (click)="toggleCreateOpen()"
+            ngClass="cancel-button no-default cursor-pointer">Cancel</button>
+        <ng-content select="[collapse]"></ng-content>
+    </div>
     <div
-        (click)="createOpen = !createOpen" 
+        (click)="toggleCreateOpen()" 
         ngClass="list_bottom cursor-pointer hover-highlight">
         <div ngClass="icon_box small">
             <svg width="20" height="20" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
