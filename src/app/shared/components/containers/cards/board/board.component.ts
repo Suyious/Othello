@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent {
+export class BoardCardComponent {
   @Input() title?: string;
   @Input() subtitle?: string;
 }

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Board } from '../types/board';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoardsService {
 
-  private baseURL = "http://192.168.29.192:3000/"
+  private baseURL = environment.baseURL;
 
   addBoard(board: Partial<Board>) {
     return this.http.post<Board>(`${this.baseURL}/boards/`, board)

@@ -19,11 +19,10 @@
         <list-column [status]="status">
             <ul ngClass="no-default">
                 <ng-container *ngFor="let t of lists">
-                    <li *ngIf="t.status === status" ngClass="list_item cursor-pointer">
-                        <p ngClass="list_item_title">{{ t.title }}</p>
-                        <p ngClass="list_item_description">{{ t.description }}</p>
-                        <div>{{ t.updated_at | timeago }}</div>
-                    </li>
+                    <li *ngIf="t.status === status" ngClass="list_item_wrapper relative">
+                        <div (mousedown)="clickAndDrag($event)" ngClass="draggable">
+                            <list-item-card [item]="t"></list-item-card>
+                        </div>
                 </ng-container>
             </ul>
             <ng-container collapse
@@ -47,8 +46,9 @@
         <list-column [status]="allStatus[active]">
             <ul ngClass="no-default">
                 <ng-container *ngFor="let t of lists">
-                    <li *ngIf="t.status === allStatus[active]" ngClass="list_item cursor-pointer hover-highlight">{{
-                        t.title }}</li>
+                    <li *ngIf="t.status === allStatus[active]" ngClass="list_item_wrapper relative">
+                        <list-item-card [item]="t"></list-item-card>
+                    </li>
                 </ng-container>
             </ul>
             <ng-container collapse

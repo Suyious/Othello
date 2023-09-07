@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { List } from '../types/list';
+import { List, Status } from '../types/list';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListsService {
 
-  private baseURL = "http://192.168.29.192:3000"
+  private baseURL = environment.baseURL
   
   getLists(boardId: string) {
     return this.http.get<List[]>(`${this.baseURL}/boards/${boardId}/lists/`);
@@ -23,6 +24,10 @@ export class ListsService {
 
   deleteList(listId: string) {
     return this.http.delete<List>(`${this.baseURL}/lists/${listId}/`);
+  }
+
+  changeStatus(listId: string, status: Status) {
+    return this.updateList(listId, { status })
   }
 
   constructor(private http: HttpClient) { }

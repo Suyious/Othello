@@ -1,0 +1,19 @@
+.list_item {
+    padding: 1em 2em;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    background: var(--secondary-background);
+}
+
+.list_item_title {
+    font-weight: 700;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+.list_menu_icon {
+    position: absolute;
+    top: 1em;
+    right: 2em;
+}

@@ -46,7 +46,6 @@ export class ListItemComponent {
   }
 
   addNewList(id:string, status: Status) {
-    console.log(id, status)
     this.listsService.createList(id, {
       title: this.newListItem.value.title,
       description: this.newListItem.value.description,
@@ -62,6 +61,41 @@ export class ListItemComponent {
           this.newListItem.reset();
         }
     }) 
+  }
+
+  changeStatus(id: string, status: Status) {
+    this.listsService.changeStatus(id, status).pipe(
+      catchError(error => {
+        return of(null);
+      })
+    ).subscribe(data => {
+      if(data) {
+        console.log(data);
+        this.lists = this.lists.map(l => {
+          if(l.id === data.id) return data;
+          return l
+        })
+      }
+    })
+  }
+
+  deleteList(id: string) {
+    this.listsService.deleteList(id).pipe(
+      catchError(e => {
+        console.error(e);
+        return of(null)
+      })
+    ).subscribe(data => {
+      console.log(data)
+      if(data === null){
+        this.lists = this.lists.filter(li => li.id !== id)
+      }
+    })
+  }
+
+  clickAndDrag(e: MouseEvent) {
+    if(e.target) {
+    }
   }
 
   ngOnInit(){

@@ -1,9 +1,11 @@
 .modal_menu_body.fixed {
     position: fixed;
+    z-index: 1;
 }
 
 .modal_menu_body.absolute {
     position: absolute;
+    z-index: 1;
 }
 
 .modal_menu_body {
