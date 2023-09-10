@@ -6,7 +6,7 @@ import { Status } from 'src/app/types/list';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent {
+export class ListColumnComponent {
   @Input() status: Status = "todo";
   createOpen: boolean = false;
 
