@@ -20,8 +20,8 @@
             <ul ngClass="no-default">
                 <ng-container *ngFor="let t of lists">
                     <li *ngIf="t.status === status" ngClass="list_item_wrapper relative">
-                        <div (mousedown)="clickAndDrag($event)" ngClass="draggable">
-                            <list-item-card [item]="t"></list-item-card>
+                        <div (dragstart)="clickAndDrag($event)" ngClass="draggable" draggable="true">
+                            <list-item-card (deleteItem)="deleteList(t.id)" [item]="t"></list-item-card>
                         </div>
                 </ng-container>
             </ul>

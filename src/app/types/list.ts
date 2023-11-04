@@ -5,6 +5,7 @@ export interface List {
     title: string,
     description: string,
     status: Status,
+    priority: number,
     created_at: string,
     updated_at: string,
 }

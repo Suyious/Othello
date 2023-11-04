@@ -3,6 +3,7 @@
     user-select: none;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
     background: var(--secondary-background);
 }
 
@@ -16,4 +17,14 @@
     position: absolute;
     top: 1em;
     right: 2em;
+}
+
+.menu-items {
+    list-style: none;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }

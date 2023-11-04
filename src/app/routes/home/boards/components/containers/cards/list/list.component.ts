@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { List } from 'src/app/types/list';
 
 @Component({
@@ -8,5 +8,10 @@ import { List } from 'src/app/types/list';
 })
 export class ListCardComponent {
   @Input() item?: List;
+  @Output() deleteItem = new EventEmitter<void>();
   menuOpen: boolean = false;
+
+  deleteListItem(){
+    this.deleteItem.emit();
+  }
 }
